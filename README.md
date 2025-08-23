@@ -90,7 +90,7 @@ Temperature Widget: Displays current temperature; advanced users can show hidden
 
 ---
 
-## Introduction to mesh on 2G, 5G and 6G bands
+## Introduction to mesh on 5G and 6G bands
 
 fakemesh is a network topology with a controller (AC), one or more wired APs, and satellites (Agents). It combines wireless Mesh and AC+AP modes.  
 Wired APs connect via Ethernet, satellites via WiFi as STA clients—enabling seamless coverage (including wired links).
@@ -115,7 +115,7 @@ Basic Components:
 Key Config Parameters:
 - Mesh ID: Must match on all nodes.
 - Key: Shared encryption key (leave blank for open).
-- Band: 2G, 5G, or 6G; all nodes must match.
+- Band: 5G, or 6G; all nodes must match.
 - Role: Controller, Satellite, Wired AP.
 - Sync Config: Centralized config from controller.
 - Access IP address: Management IP for controller.
@@ -132,7 +132,7 @@ If the controller is not the gateway or DHCP server, set LAN IP, gateway, and DN
 
 Special thanks to woziwrt (without your work and patches, this project would not have reached this level).  https://github.com/woziwrt/bpi-r4-openwrt-builder/tree/main
 Thank you RafalB82 for the xgs-pon patch for the 8311-was-110, which allows routers to work perfectly with 10G symmetric fiber (up to 8Gbps real).  
-Thanks to GitHub Copilot for making 6G mesh possible; after months of work, mesh networking is now available on 2G, 5G, and 6G bands!  
+Thanks to GitHub Copilot for making 6G mesh possible; after months of work, mesh networking is now available on 5G, and 6G bands!  
 All work done within OpenWrt to ensure that port LEDs are only lit when a network cable is connected (and to avoid duplicated ports) is also available for anyone who wants to improve it.  
 Thanks for all the work so far—there is still much to do, and many ideas to come!
 
@@ -207,7 +207,7 @@ Widget de temperatura: Muestra la temperatura actual; usuarios avanzados pueden 
 
 ---
 
-## Introducción a mesh en las bandas 2G, 5G y 6G
+## Introducción a mesh en las bandas 5G y 6G
 
 fakemesh es una topología de red formada por un controlador (AC), uno o más AP cableados y satélites (Agent).  
 Combina Mesh inalámbrico y modo AC+AP.  
@@ -233,7 +233,7 @@ Componentes básicos:
 Parámetros clave:
 - Mesh ID: igual en todos los nodos.
 - Clave: contraseña compartida (dejar en blanco para abierta).
-- Banda: 2G, 5G o 6G; todos los nodos deben coincidir.
+- Banda: 5G o 6G; todos los nodos deben coincidir.
 - Rol: controlador, satélite, AP cableado.
 - Sync Config: configuración centralizada desde el controlador.
 - Dirección IP de acceso: IP de gestión del controlador.
