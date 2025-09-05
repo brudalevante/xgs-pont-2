@@ -20,10 +20,10 @@ rm -rf mtk-openwrt-feeds
 rm -rf tmp_comxwrt
 
 echo "==== 2. CLONA REPOSITORIOS ===="
-git clone --branch main https://github.com/brudalevante/openwrt-13-08-2025.git openwrt || true
+git clone --branch main https://github.com/brudalevante/openwrt-espejo.git openwrt || true
 cd openwrt; git checkout 7cfceb83f98d0c12072049550ae5d31150a6bcc8; cd -;	# uhttpd: update to Git HEAD (2025-07-06)
 
-git clone https://github.com/brudalevante/mtk-13-08-2025.git mtk-openwrt-feeds || true
+git clone https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds || true
 cd mtk-openwrt-feeds; git checkout 5edfb15b7b515bf36da356d103bbefa87829aa48; cd -; # Refactor wed amsdu init value
 
 echo "5edfb1" > mtk-openwrt-feeds/autobuild/unified/feed_revision
