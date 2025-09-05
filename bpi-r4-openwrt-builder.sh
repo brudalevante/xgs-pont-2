@@ -7,7 +7,7 @@ rm -rf openwrt mtk-openwrt-feeds tmp_comxwrt
 
 echo "==== 2. CLONA REPOSITORIOS (kernel 6.6.100) ===="
 git clone --branch main https://github.com/brudalevante/openwrt-espejo.git openwrt
-cd openwrt && git checkout b4b9288f2aa3dd1a759e5effbc8378f614bd5755 && cd -
+cd openwrt && git checkout 7cfceb83f98d0c12072049550ae5d31150a6bcc8 && cd -
 git clone https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds
 cd mtk-openwrt-feeds && git checkout 5edfb15b7b515bf36da356d103bbefa87829aa48 && cd -
 
