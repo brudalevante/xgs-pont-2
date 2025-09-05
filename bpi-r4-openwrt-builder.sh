@@ -7,12 +7,12 @@ rm -rf openwrt mtk-openwrt-feeds tmp_comxwrt
 
 echo "==== 2. CLONA REPOSITORIOS (kernel 6.6.100) ===="
 git clone --branch main https://github.com/brudalevante/openwrt-espejo.git openwrt || true
-cd openwrt; git checkout 4941509f573676c4678115a0a3a743ef78b63c17; cd -;	# uhttpd: update to Git HEAD (2025-07-06) kernel 6.6.100
+cd openwrt; git checkout b4b9288f2aa3dd1a759e5effbc8378f614bd5755; cd -;	# uhttpd: update to Git HEAD (2025-07-06) kernel 6.6.100
 
 git clone https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout 39d725c3e3b486405e6148c8466111ef13516808; cd -; # Refactor wed amsdu init value
+cd mtk-openwrt-feeds; git checkout 3b4a13b14884e4eb1a4229e586390a1fd226ab82; cd -; # Refactor wed amsdu init value
 
-echo "39d725" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+echo "3b4a13" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 cp -r my_files/w-autobuild.sh mtk-openwrt-feeds/autobuild/unified/autobuild.sh
 cp -r my_files/w-rules mtk-openwrt-feeds/autobuild/unified/filogic/rules
