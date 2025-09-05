@@ -44,34 +44,27 @@ cp -rv tmp_comxwrt/luci-app-temp-status openwrt/package/
 cp -rv tmp_comxwrt/luci-app-dawn2 openwrt/package/
 cp -rv tmp_comxwrt/luci-app-usteer2 openwrt/package/
 
-echo "==== 6. COPIA ARCHIVOS DE CONFIG PERSONALIZADOS ===="
-mkdir -p openwrt/package/base-files/files/etc/config
-mkdir -p openwrt/package/base-files/files/etc
 
-cp -v configs/network openwrt/package/base-files/files/etc/config/network
-cp -v configs/system openwrt/package/base-files/files/etc/config/system
-cp -v my_files/board.json openwrt/package/base-files/files/etc/board.json
-
-echo "==== 7. ENTRA EN OPENWRT Y CONFIGURA FEEDS ===="
+echo "==== 6. ENTRA EN OPENWRT Y CONFIGURA FEEDS ===="
 cd openwrt
 
 rm -rf feeds/
 cat feeds.conf.default
 
-echo "==== 8. COPIA LA CONFIGURACIÓN BASE (mm_perf.config) ===="
+echo "==== 7. COPIA LA CONFIGURACIÓN BASE (mm_perf.config) ===="
 cp -v ../configs/config_mm_06082025 .config
 
-echo "==== 9. COPIA TU CONFIGURACIÓN PERSONALIZADA AL DEFCONFIG DEL AUTOBUILD ===="
+echo "==== 8. COPIA TU CONFIGURACIÓN PERSONALIZADA AL DEFCONFIG DEL AUTOBUILD ===="
 cp -v ../configs/config_mm_06082025 ../mtk-openwrt-feeds/autobuild/unified/filogic/24.10/defconfig
 
-echo "==== 10. ACTUALIZA E INSTALA FEEDS ===="
+echo "==== 9. ACTUALIZA E INSTALA FEEDS ===="
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-echo "==== 11. RESUELVE DEPENDENCIAS ===="
+echo "==== 10. RESUELVE DEPENDENCIAS ===="
 make defconfig
 
-echo "==== 12. VERIFICACIÓN FINAL ===="
+echo "==== 11. VERIFICACIÓN FINAL ===="
 for pkg in \
   fakemesh autoreboot cpu-status temp-status dawn2 dawn usteer2 wireguard
 do
@@ -82,7 +75,7 @@ grep "CONFIG_PACKAGE_kmod-wireguard=y" .config || echo "ATENCIÓN: kmod-wireguar
 grep "CONFIG_PACKAGE_wireguard-tools=y" .config || echo "ATENCIÓN: wireguard-tools NO está marcado"
 grep "CONFIG_PACKAGE_luci-proto-wireguard=y" .config || echo "ATENCIÓN: luci-proto-wireguard NO está marcado"
 
-echo "==== 13. EJECUTA AUTOBUILD ===="
+echo "==== 12. EJECUTA AUTOBUILD ===="
 bash ../mtk-openwrt-feeds/autobuild/unified/autobuild.sh filogic-mac80211-mt7988_rfb-mt7996 log_file=make
 
 # ==== ELIMINAR EL WARNING EN ROJO DEL MAKEFILE ====
@@ -93,7 +86,7 @@ if grep -q "WARNING: Applying padding" scripts/ipkg-make-index.sh; then
   sed -i '/WARNING: Applying padding/d' scripts/ipkg-make-index.sh
 fi
 
-echo "==== 12. COMPILA ===="
+echo "==== 13. COMPILA ===="
 make -j$(nproc)
 
 echo "==== 14. COMPILA ===="
