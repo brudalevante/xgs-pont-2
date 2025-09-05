@@ -6,16 +6,13 @@ rm -rf openwrt mtk-openwrt-feeds tmp_comxwrt
 
 echo "==== 2. CLONA TUS REPOS PERSONALES ===="
 git clone --branch main https://github.com/brudalevante/openwrt-espejo.git openwrt || true
-cd openwrt
-git checkout 7cfceb83f98d0c12072049550ae5d31150a6bcc8
-cd ..
-https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds
-git checkout 5edfb15b7b515bf36da356d103bbefa87829aa48
-cd ..
+cd openwrt; git checkout 7cfceb83f98d0c12072049550ae5d31150a6bcc8; cd -;	# uhttpd: update to Git HEAD (2025-07-06)
 
-echo "==== 3. PREPARA FEEDS Y CONFIGURACIONES BASE ===="
+git clone https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds || true
+cd mtk-openwrt-feeds; git checkout 5edfb15b7b515bf36da356d103bbefa87829aa48; cd -; # Refactor wed amsdu init value
+
 echo "5edfb1" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+
 cp -r my_files/w-autobuild.sh mtk-openwrt-feeds/autobuild/unified/autobuild.sh
 cp -r my_files/w-rules mtk-openwrt-feeds/autobuild/unified/filogic/rules
 chmod 776 -R mtk-openwrt-feeds/autobuild/unified
