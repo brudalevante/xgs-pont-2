@@ -66,14 +66,19 @@ git clone --depth=1 --single-branch --branch main https://github.com/brudalevant
 \cp -rv tmp_comxwrt/luci-app-dawn2 openwrt/package/
 \cp -rv tmp_comxwrt/luci-app-usteer2 openwrt/package/
 
-echo "==== 7. CONFIGURACIÓN OPENWRT Y FEEDS ===="
+echo "==== 6b. ENTRA EN OPENWRT Y CONFIGURA FEEDS ===="
 cd openwrt
-echo "==== LIMPIANDO feeds/ previos ===="
 rm -rf feeds/
-echo "==== USANDO feeds.conf.default DEL REPO (OFICIAL) ===="
 cat feeds.conf.default
 
-\cp -r ../configs/config_mm_06082025 .config 2>/dev/null || echo "No existe rc1_ext_mm_config, omitiendo"
+
+echo "==== 7. COPIA LA CONFIGURACIÓN BASE (mm_perf.config) ===="
+cp -v ../configs/config_mm_06082025 .config
+
+echo "==== 8. COPIA TU CONFIGURACIÓN PERSONALIZADA AL DEFCONFIG DEL AUTOBUILD ===="
+cp -v ../configs/config_mm_06082025 ../mtk-openwrt-feeds/autobuild/unified/filogic/24.10/defconfig
+
+
 
 # Limpia perf en .config ANTES de feeds/install
 sed -i '/CONFIG_PACKAGE_perf=y/d' .config
