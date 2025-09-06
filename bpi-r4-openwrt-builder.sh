@@ -5,8 +5,8 @@ echo "==== 1. LIMPIEZA ===="
 rm -rf openwrt mtk-openwrt-feeds tmp_comxwrt
 
 echo "==== 2. CLONA TUS REPOS PERSONALES ===="
-git clone --branch main https://github.com/brudalevante/openwrt-sin-mlo.git openwrt || true
-cd openwrt; git checkout 7ebc59c8123abe71e503673c200bf41eaabc5e36; cd -;
+git clone --branch main https://github.com/brudalevante/openwrt-espejo-mlo.git openwrt || true
+cd openwrt; git checkout 3261c61fc6788fee6f993acde9c211837393a692; cd -;
 
 git clone https://github.com/brudalevante/mtk-18-08-25-espejo.git mtk-openwrt-feeds || true
 cd mtk-openwrt-feeds; git checkout 5edfb15b7b515bf36da356d103bbefa87829aa48; cd -;
