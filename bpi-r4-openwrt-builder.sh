@@ -17,12 +17,12 @@ cp -r my_files/w-autobuild.sh mtk-openwrt-feeds/autobuild/unified/autobuild.sh
 cp -r my_files/w-rules mtk-openwrt-feeds/autobuild/unified/filogic/rules
 chmod 776 -R mtk-openwrt-feeds/autobuild/unified
 
-# Wireless regulatory database modifications (removes country restrictions)
-    log "Patching wireless-regdb..."
-    rm -f "$OPENWRT_DIR/package/firmware/wireless-regdb/patches/"*
-    rm -f "$MTK_FEEDS_DIR/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches/"*
-    cp "$SOURCE_PATCH_DIR/500-tx_power.patch" "$MTK_FEEDS_DIR/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches/"
-    cp "$SOURCE_PATCH_DIR/regdb.Makefile" "$OPENWRT_DIR/package/firmware/wireless-regdb/Makefile"
+# Wireless regdb mods (descomenta si lo necesitas)
+rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
+rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches/*.*
+\cp -r my_files/500-tx_power.patch mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches
+\cp -r my_files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
+
 
 
 rm -rf mtk-openwrt-feeds/24.10/patches-feeds/108-strongswan-add-uci-support.patch
